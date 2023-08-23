@@ -3,32 +3,15 @@ import PokemonGrid from './PokemonGrid';
 
 const App = () => {
   const [pokemonData, setPokemonData] = useState([]);
-
+  // use the useEffect hook to fetch data when the component mounts.
   useEffect(() => {
     // Fetch a list of Pokemon from the PokeAPI
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=20')  // Limit the number of Pokemon for demonstration
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=151') // You can adjust the limit as needed
       .then((response) => response.json())
-      .then((data) => {
-        // Map over the fetched data to get additional details for each Pokemon
-        const pokemonDetailsPromises = data.results.map((pokemon) =>
-          fetch(pokemon.url)
-            .then((response) => response.json())
-        );
-
-        // Wait for all details to be fetched
-        Promise.all(pokemonDetailsPromises)
-          .then((detailedPokemonData) => {
-            setPokemonData(detailedPokemonData);
-          })
-          .catch((error) => {
-            console.error('Error fetching Pokemon details:', error);
-          });
-      })
-      .catch((error) => {
-        console.error('Error fetching Pokemon list:', error);
-      });
+      .then((data) => setPokemonData(data.results))
+      .catch((error) => console.error('Error fetching Pokemon data:', error));
   }, []);
-
+  // passing pokemonData as a prop to the PokemonGrid component. 
   return (
     <div className="App">
       <h1>Pokedex</h1>
