@@ -1,0 +1,30 @@
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.pokemon-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.pokemon-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.pokemon-card p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
