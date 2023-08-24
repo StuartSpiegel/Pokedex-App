@@ -14,9 +14,12 @@ const PokemonDetail = ({ pokemonData }) => {
   return (
     <div className="pokemon-detail">
       <h2>{selectedPokemon.name}</h2>
-      <img src={selectedPokemon.imageUrl} alt={selectedPokemon.name} />
-      <p>Type: {selectedPokemon.types.join(', ')}</p>
-      {/* Add more details as needed */}
+      <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name} />
+      <p>Type: {selectedPokemon.types.map((type) => type.type.name).join(', ')}</p>
+      <p>Height: {selectedPokemon.height} cm</p>
+      <p>Weight: {selectedPokemon.weight} kg</p>
+      <p>Abilities: {selectedPokemon.abilities.map((ability) => ability.ability.name).join(', ')}</p>
+      {/* Display other attributes */}
     </div>
   );
 };
