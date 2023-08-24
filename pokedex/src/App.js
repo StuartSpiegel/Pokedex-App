@@ -55,11 +55,13 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <h1>Pokedex</h1>
+        <header className='App-header'>
+        <h1 className='pokedex-title'>Pokedex</h1>
         <Routes>
           <Route path="/" element={<PokemonGrid pokemonData={pokemonData} />} />
           <Route path="/pokemon/:id" element={<PokemonDetail pokemonData={pokemonData} />} />
         </Routes>
+        </header>
       </div>
     </Router>
   );

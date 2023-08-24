@@ -1,34 +1,56 @@
+/*
+.APP CSS - box-shadow : 
+The first value (0) is the horizontal offset of the shadow.
+The second value (4px) is the vertical offset of the shadow.
+The third value (8px) is the blur radius of the shadow.
+The fourth value (rgba(0, 0, 0, 0.1)) is the color and transparency of the shadow. The rgba values represent black with 10% opacity.
+*/
+.App {
+  background-color: red;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust values as needed */
+  /* ... other styles */
+}
+
+.App h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+}
+
 .pokemon-grid {
+  background-color: red;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  gap: 1rem;
 }
 
 .pokemon-card {
-  border: 1px solid #ccc;
+  text-decoration: none;
+  color: #333;
+  background-color: #f7f7f7;
+  border: 1px solid #ffcc00; /* Set the yellow border color */
+  border-radius: 10px;
   padding: 10px;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.2s ease-in-out;
+
 }
 
 .pokemon-card img {
   max-width: 100%;
   height: auto;
-  margin-bottom: 10px;
 }
 
 .pokemon-card h3 {
-  margin: 0;
+  margin-top: 10px;
   font-size: 1.2rem;
 }
 
 .pokemon-card p {
-  margin: 5px 0;
-  font-size: 1rem;
+  margin-top: 5px;
+  font-size: 0.9rem;
 }
-
 body {
   margin: 0;
   padding: 0;
@@ -42,10 +64,41 @@ body {
   color: #333;
 }
 
+.pokedex-title {
+  font-family: 'Your Chosen Font', sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: yellow; /* Text color */
+  /* Additional styling properties */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #f44336; /* Red background color */
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pokedex-title:hover {
+  background-color: #e57373; /* Lighter red on hover */
+}
+
+.pokedex-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Additional styles */
+}
+
 h1 {
   font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-stretch: expanded;
   text-align: center;
   margin: 20px 0;
+  font-size: 40px;
+  color: yellow;
 }
 
 .pokemon-grid {

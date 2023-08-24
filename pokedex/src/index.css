@@ -1,3 +1,9 @@
+/* Apply the font to the site title */
+.App h1 {
+  font-family: 'Open Sans', sans-serif;
+  align-items: center;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +17,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

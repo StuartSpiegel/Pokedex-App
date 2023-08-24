@@ -1,40 +1,35 @@
 .pokemon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  background-color: #f0f0f0; /* Set your desired background color */
+  gap: 1rem;
+  background-color: red; /* Set your desired background color */
   padding: 20px; /* Add padding for better spacing */
 }
 
 .pokemon-card {
-  border: 1px solid #ccc;
+  text-decoration: none;
+  color: #333;
+  background-color: #f7f7f7;
+  border: 4px solid #ffcc00; /* Set the yellow border color */
+  border-radius: 10px;
   padding: 10px;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add transition effects */
-}
-
-.pokemon-card:hover {
-  transform: translateY(-5px); /* Apply a slight lift on hover */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  transition: transform 0.2s ease-in-out;
 }
 
 .pokemon-card img {
   max-width: 100%;
   height: auto;
-  margin-bottom: 20px;
 }
 
 .pokemon-card h3 {
-  margin: 0;
+  margin-top: 10px;
   font-size: 1.2rem;
 }
 
 .pokemon-card p {
-  margin: 5px 0;
-  font-size: 1rem;
+  margin-top: 5px;
+  font-size: 0.9rem;
 }
