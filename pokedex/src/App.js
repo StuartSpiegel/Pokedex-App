@@ -22,8 +22,14 @@ const App = () => {
   useEffect(() => {
     const fetchPokemonData = async () => {
       try {
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=1008');
         const pokemonList = response.data.results;
+
+        const pokemonData = response.data.results.map((pokemon, index) => ({
+          id: index + 1, // Pokedex number
+          name: pokemon.name,
+          url: pokemon.url,
+        }));
 
         const detailedPokemonList = await Promise.all(
           pokemonList.map(async (pokemon) => {
@@ -33,12 +39,13 @@ const App = () => {
         );
 
         setPokemonData(detailedPokemonList);
+        return pokemonData;
       } catch (error) {
         console.error('Error fetching Pokemon data:', error);
       }
     };
 
-    fetchPokemonData();
+      fetchPokemonData();
   }, []);
 
   // passing pokemonData as a prop to the PokemonGrid component. 
@@ -60,6 +67,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<PokemonGrid pokemonData={pokemonData} />} />
           <Route path="/pokemon/:id" element={<PokemonDetail pokemonData={pokemonData} />} />
+          <Route path="/pokemon/:pokedexNumber" component={PokemonDetail} /> 
         </Routes>
         </header>
       </div>

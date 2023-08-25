@@ -17,8 +17,12 @@
     margin-bottom: 10px;
   }
   
-  .pokemon-detail p {
-    font-size: 1.2rem;
-    margin: 5px 0;
-  }
-  
+.pokemon-card p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: black; 
+}
+
+h3 {
+  color: black;
+}

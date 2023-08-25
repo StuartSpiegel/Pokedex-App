@@ -1,5 +1,5 @@
 import React from 'react';
-import './PokemonGrid.css'; // Import your CSS file for styling
+import './PokemonGrid.css'; 
 import { Link } from 'react-router-dom';
 
 //helper function to capitalize the first letter of each pokemon name
@@ -15,7 +15,8 @@ const PokemonGrid = ({ pokemonData }) => {
           <div className="pokemon-card-content">
             <img src={pokemon.sprites.front_default} alt={pokemon.name} />
             <h3>{capitalizeFirstLetter(pokemon.name)}</h3> 
-            <p>Type: {pokemon.types.map((type) => type.type.name).join(', ')}</p>
+            <h4>{pokemon.id}</h4> {/* Display Pokedex number */}
+            <h4>Type: {pokemon.types.map((type) => capitalizeFirstLetter(type.type.name)).join(', ')}</h4>
           </div>
         </Link>
       ))}

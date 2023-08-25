@@ -6,9 +6,8 @@ The third value (8px) is the blur radius of the shadow.
 The fourth value (rgba(0, 0, 0, 0.1)) is the color and transparency of the shadow. The rgba values represent black with 10% opacity.
 */
 .App {
-  background-color: red;
+  background-color: crimson;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust values as needed */
-  /* ... other styles */
 }
 
 .App h1 {
@@ -17,7 +16,7 @@ The fourth value (rgba(0, 0, 0, 0.1)) is the color and transparency of the shado
 }
 
 .pokemon-grid {
-  background-color: red;
+  background-color: crimson;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
@@ -26,7 +25,7 @@ The fourth value (rgba(0, 0, 0, 0.1)) is the color and transparency of the shado
 .pokemon-card {
   text-decoration: none;
   color: #333;
-  background-color: #f7f7f7;
+  background-color: silver;
   border: 1px solid #ffcc00; /* Set the yellow border color */
   border-radius: 10px;
   padding: 10px;
@@ -34,7 +33,6 @@ The fourth value (rgba(0, 0, 0, 0.1)) is the color and transparency of the shado
   flex-direction: column;
   align-items: center;
   transition: transform 0.2s ease-in-out;
-
 }
 
 .pokemon-card img {
@@ -47,10 +45,6 @@ The fourth value (rgba(0, 0, 0, 0.1)) is the color and transparency of the shado
   font-size: 1.2rem;
 }
 
-.pokemon-card p {
-  margin-top: 5px;
-  font-size: 0.9rem;
-}
 body {
   margin: 0;
   padding: 0;
@@ -61,18 +55,17 @@ body {
 
 body {
   font-family: 'Open Sans', sans-serif; /* Load a Google Font */
-  color: #333;
 }
 
 .pokedex-title {
-  font-family: 'Your Chosen Font', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   font-size: 2rem;
   letter-spacing: 2px;
   color: yellow; /* Text color */
   /* Additional styling properties */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  background-color: #f44336; /* Red background color */
+  background-color: black;
   padding: 10px 20px;
   border-radius: 8px;
   transition: background-color 0.3s ease;
@@ -80,21 +73,20 @@ body {
 }
 
 .pokedex-title:hover {
-  background-color: #e57373; /* Lighter red on hover */
+  background-color: crimson;
 }
 
 .pokedex-title-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Additional styles */
 }
 
 h1 {
   font-size: 2rem;
   font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-stretch: expanded;
+  font-style:normal;
+  font-stretch:ultra-expanded;
   text-align: center;
   margin: 20px 0;
   font-size: 40px;
@@ -117,7 +109,6 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.2s ease-in-out;
   &:hover {
     transform: scale(1.05);
   }
@@ -140,4 +131,6 @@ h1 {
 .pokemon-card p {
   margin-top: 5px;
   font-size: 0.9rem;
+  color: black;
 }
+
