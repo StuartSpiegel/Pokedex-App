@@ -1,0 +1,10 @@
+/* Home.css */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Add any additional styling for the search bar if needed */
+  

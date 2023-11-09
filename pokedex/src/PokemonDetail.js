@@ -1,3 +1,4 @@
+// PokemonDetail.js
 import React from 'react';
 import './PokemonDetail.css';
 import { useParams } from 'react-router-dom';
@@ -6,7 +7,6 @@ const capitalizeFirstLetter = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-// use the 'id' parameter from the URL using the "useParams" hook from 'react-router-dom'
 const PokemonDetail = ({ pokemonData }) => {
   const { id } = useParams();
   const selectedPokemon = pokemonData.find((pokemon) => pokemon.id.toString() === id);
@@ -23,8 +23,7 @@ const PokemonDetail = ({ pokemonData }) => {
       <p>Type: {selectedPokemon.types.map((type) => capitalizeFirstLetter(type.type.name)).join(', ')}</p>
       <p>Height: {selectedPokemon.height} cm</p>
       <p>Weight: {selectedPokemon.weight} kg</p>
-      <p>Abilities: {selectedPokemon.abilities.map((ability) => ability.ability.name).join(', ')}</p>
-      {/* Display other attributes */}
+      <p>Abilities: {selectedPokemon.abilities.map((ability) => capitalizeFirstLetter(ability.ability.name)).join(', ')}</p>
     </div>
   );
 };

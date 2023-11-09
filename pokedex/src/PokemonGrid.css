@@ -1,21 +1,17 @@
 .pokemon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   background-color: crimson; 
-  padding: 20px; 
 }
 
 .pokemon-card {
   text-decoration: none;
-  color: #333;
-  background-color: lightgrey;
-  border: 4px solid #ffcc00; /* Set the yellow border color */
-  border-radius: 10px;
+  color: inherit;
+  margin: 10px;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border: 2px solid #f3c623; /* Add a yellow border */
+  border-radius: 10px;
 }
 
 .pokemon-card img {
