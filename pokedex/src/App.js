@@ -1,45 +1,49 @@
 // App.js
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import axios from 'axios';
-import './App.css'; // Import your main CSS file
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import './App.css';
 import PokemonDetail from './PokemonDetail';
 import SearchApp from './SearchApp';
 import Home from './Home';
+import ErrorBoundary from './components/ErrorBoundary';
+import { FavoritesProvider } from './contexts/FavoritesContext';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { ComparisonProvider } from './contexts/ComparisonContext';
+
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes (renamed from cacheTime)
+      retry: 2,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
-  const [pokemonData, setPokemonData] = useState([]);
-
-  useEffect(() => {
-    const fetchPokemonData = async () => {
-      try {
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100');
-        const pokemonList = response.data.results;
-
-        const detailedPokemonList = await Promise.all(
-          pokemonList.map(async (pokemon) => {
-            const detailedResponse = await axios.get(pokemon.url);
-            return detailedResponse.data;
-          })
-        );
-
-        setPokemonData(detailedPokemonList);
-      } catch (error) {
-        console.error('Error fetching Pokemon data:', error);
-      }
-    };
-
-    fetchPokemonData();
-  }, []);
-
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home pokemonData={pokemonData} />} />
-        <Route path="/search" element={<SearchApp />} />
-        <Route path="/pokemon/:id" element={<PokemonDetail pokemonData={pokemonData} />} />
-      </Routes>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <ComparisonProvider>
+          <FavoritesProvider>
+            <ErrorBoundary>
+              <Router>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/search" element={<SearchApp />} />
+                  <Route path="/pokemon/:id" element={<PokemonDetail />} />
+                </Routes>
+              </Router>
+            </ErrorBoundary>
+            {process.env.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
+          </FavoritesProvider>
+        </ComparisonProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 

@@ -1,0 +1,368 @@
+.stats-chart {
+  background: var(--surface);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+  box-shadow: var(--shadow-md);
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  border-bottom: 2px solid var(--primary-blue);
+  padding-bottom: var(--space-md);
+}
+
+.stats-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.stats-summary {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.total-stats {
+  color: var(--primary-blue);
+  background: rgba(52, 152, 219, 0.1);
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.average-stat {
+  color: var(--success-green);
+  background: rgba(46, 204, 113, 0.1);
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.stats-visualization {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.stats-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas: 'info bar';
+  gap: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--background-light);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  min-height: 80px;
+  align-items: center;
+}
+
+.stat-row:hover {
+  background: var(--background-gray);
+  transform: translateX(4px);
+}
+
+.stat-info {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-area: info;
+  gap: 6px;
+  width: 100%;
+  padding: 0;
+}
+
+.stat-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  margin: 0;
+  grid-row: 1;
+}
+
+.stat-value {
+  font-weight: 700;
+  color: var(--primary-blue);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  margin: 0;
+  grid-row: 2;
+}
+
+.stat-rating {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+  grid-row: 3;
+}
+
+.stat-bar-container {
+  height: 28px;
+  background: #e9ecef;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  align-self: center;
+  width: 100%;
+  border: 1px solid var(--border-light);
+  display: block;
+  grid-area: bar;
+}
+
+.stat-bar {
+  height: 100%;
+  border-radius: 12px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+  min-width: 10px;
+  display: block;
+  opacity: 1;
+}
+
+.stat-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+.stat-percentage {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.stats-radar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radar-chart {
+  position: relative;
+  width: 280px;
+  height: 280px;
+}
+
+.radar-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.radar-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.radar-label {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 8px;
+  border: 1px solid var(--border-gray);
+  white-space: nowrap;
+}
+
+.stats-insights {
+  border-top: 1px solid var(--border-gray);
+  padding-top: var(--space-md);
+}
+
+.stat-highlights {
+  display: flex;
+  justify-content: space-around;
+  gap: var(--space-md);
+}
+
+.highest-stat,
+.lowest-stat {
+  text-align: center;
+  padding: var(--space-sm);
+  border-radius: var(--border-radius);
+  flex: 1;
+}
+
+.highest-stat {
+  background: rgba(46, 204, 113, 0.1);
+  border-left: 3px solid var(--success-green);
+  color: var(--success-green);
+}
+
+.lowest-stat {
+  background: rgba(231, 76, 60, 0.1);
+  border-left: 3px solid var(--error-red);
+  color: var(--error-red);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .stats-visualization {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .radar-chart {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-chart {
+    padding: var(--space-md);
+  }
+
+  .stats-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .stats-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .stat-row {
+    grid-template-columns: 160px 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-md);
+    min-height: 70px;
+  }
+
+  .radar-chart {
+    width: 220px;
+    height: 220px;
+  }
+
+  .stat-highlights {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+  }
+
+  .stat-row {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    min-height: 100px;
+  }
+
+  .stat-info {
+    grid-template-rows: auto auto auto;
+    gap: 4px;
+  }
+
+  .stat-bar-container {
+    margin-left: 0;
+    grid-row: 2;
+  }
+
+  .stat-bar-container {
+    height: 16px;
+  }
+
+  .radar-chart {
+    width: 200px;
+    height: 200px;
+  }
+
+  .radar-label {
+    font-size: 0.7rem;
+  }
+
+  .stats-summary {
+    flex-direction: column;
+    gap: var(--space-xs);
+    align-items: flex-start;
+  }
+}
+
+/* Animation for stats loading */
+.stat-row {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.stat-row:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.stat-row:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.stat-row:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.stat-row:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.stat-row:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

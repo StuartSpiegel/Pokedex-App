@@ -1,0 +1,353 @@
+/* Search and Filter Component */
+.search-and-filter {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.search-header {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 15px;
+  padding: 20px;
+  background-color: var(--background-gray);
+  border-bottom: 1px solid var(--border-light);
+  align-items: center;
+}
+
+.search-input-container {
+  position: relative;
+  width: 100%;
+  min-width: 250px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border: 2px solid var(--border-gray);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  transition: var(--transition);
+  background: white;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.filter-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.sort-select {
+  padding: 10px 15px;
+  border: 2px solid var(--border-gray);
+  border-radius: var(--border-radius);
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+}
+
+.filter-toggle-btn {
+  padding: 10px 20px;
+  border: 2px solid var(--border-gray);
+  background: white;
+  color: var(--text-secondary);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.filter-toggle-btn:hover {
+  background-color: var(--background-gray);
+}
+
+.filter-toggle-btn.active {
+  background-color: var(--primary-blue);
+  color: white;
+  border-color: var(--primary-blue);
+}
+
+.clear-filters-btn {
+  padding: 10px 16px;
+  border: 2px solid var(--error-red);
+  background: white;
+  color: var(--error-red);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.clear-filters-btn:hover {
+  background-color: var(--error-red);
+  color: white;
+}
+
+.advanced-filters {
+  padding: 20px;
+  background: white;
+  border-top: 1px solid var(--border-light);
+}
+
+.filter-section {
+  margin-bottom: 25px;
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+}
+
+.filter-section h4 {
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.type-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.type-filter-btn {
+  padding: 8px 16px;
+  border: 2px solid var(--border-gray);
+  background: white;
+  color: var(--text-secondary);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: capitalize;
+  transition: var(--transition);
+}
+
+.type-filter-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.type-filter-btn.selected {
+  color: white;
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Pokemon type colors */
+.type-normal.selected {
+  background-color: #a8a878;
+}
+.type-fire.selected {
+  background-color: #f08030;
+}
+.type-water.selected {
+  background-color: #6890f0;
+}
+.type-electric.selected {
+  background-color: #f8d030;
+}
+.type-grass.selected {
+  background-color: #78c850;
+}
+.type-ice.selected {
+  background-color: #98d8d8;
+}
+.type-fighting.selected {
+  background-color: #c03028;
+}
+.type-poison.selected {
+  background-color: #a040a0;
+}
+.type-ground.selected {
+  background-color: #e0c068;
+}
+.type-flying.selected {
+  background-color: #a890f0;
+}
+.type-psychic.selected {
+  background-color: #f85888;
+}
+.type-bug.selected {
+  background-color: #a8b820;
+}
+.type-rock.selected {
+  background-color: #b8a038;
+}
+.type-ghost.selected {
+  background-color: #705898;
+}
+.type-dragon.selected {
+  background-color: #7038f8;
+}
+.type-dark.selected {
+  background-color: #705848;
+}
+.type-steel.selected {
+  background-color: #b8b8d0;
+}
+.type-fairy.selected {
+  background-color: #ee99ac;
+}
+
+.range-filters {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.range-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.range-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.range-inputs input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid var(--border-gray);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.range-inputs input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+}
+
+.range-inputs span {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.results-summary {
+  padding: 15px 20px;
+  background-color: var(--background-light);
+  border-top: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-size: 14px;
+  text-align: center;
+}
+
+.filter-indicator {
+  color: var(--primary-blue);
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-header {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .search-input-container {
+    min-width: unset;
+  }
+
+  .filter-controls {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sort-select {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .type-filters {
+    gap: 6px;
+  }
+
+  .type-filter-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .range-filters {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .range-group {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-header {
+    padding: 15px;
+  }
+
+  .advanced-filters {
+    padding: 15px;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-select,
+  .filter-toggle-btn,
+  .clear-filters-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .type-filter-btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .range-inputs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .range-inputs span {
+    text-align: center;
+  }
+}

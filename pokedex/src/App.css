@@ -1,13 +1,307 @@
-/*
-.APP CSS - box-shadow : 
-The first value (0) is the horizontal offset of the shadow.
-The second value (4px) is the vertical offset of the shadow.
-The third value (8px) is the blur radius of the shadow.
-The fourth value (rgba(0, 0, 0, 0.1)) is the color and transparency of the shadow. The rgba values represent black with 10% opacity.
-*/
+/* Global CSS Variables - Light Theme */
+:root {
+  --primary-blue: #3498db;
+  --primary-blue-dark: #2980b9;
+  --error-red: #e74c3c;
+  --error-red-dark: #c0392b;
+  --success-green: #27ae60;
+  --success-green-dark: #219a52;
+  --text-primary: #2c3e50;
+  --text-secondary: #666;
+  --text-muted: #7f8c8d;
+  --border-gray: #ddd;
+  --border-light: #f0f0f0;
+  --background-gray: #f8f9fa;
+  --background-light: #f7f7f7;
+  --background-main: #ffffff;
+  --surface: #ffffff;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 6px;
+  --border-radius-lg: 10px;
+  --transition: all 0.2s ease;
+  
+  /* Responsive breakpoints */
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --desktop-large: 1200px;
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Container widths */
+  --container-sm: 576px;
+  --container-md: 768px;
+  --container-lg: 992px;
+  --container-xl: 1200px;
+  --container-2xl: 1400px;
+}
+
+/* Dark Theme Variables */
+[data-theme='dark'] {
+  --primary-blue: #5dade2;
+  --primary-blue-dark: #3498db;
+  --error-red: #e74c3c;
+  --error-red-dark: #c0392b;
+  --success-green: #58d68d;
+  --success-green-dark: #27ae60;
+  --text-primary: #ecf0f1;
+  --text-secondary: #bdc3c7;
+  --text-muted: #95a5a6;
+  --border-gray: #34495e;
+  --border-light: #2c3e50;
+  --background-gray: #2c3e50;
+  --background-light: #34495e;
+  --background-main: #1a252f;
+  --surface: #2c3e50;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --border-radius: 6px;
+  --border-radius-lg: 10px;
+  --transition: all 0.2s ease;
+}
+
+/* Utility Classes */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-blue-dark);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+/* Container utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 var(--space-md);
+}
+
+/* Responsive text utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Spacing utilities */
+.mb-sm {
+  margin-bottom: var(--space-sm);
+}
+.mb-md {
+  margin-bottom: var(--space-md);
+}
+.mb-lg {
+  margin-bottom: var(--space-lg);
+}
+.mb-xl {
+  margin-bottom: var(--space-xl);
+}
+
+.mt-sm {
+  margin-top: var(--space-sm);
+}
+.mt-md {
+  margin-top: var(--space-md);
+}
+.mt-lg {
+  margin-top: var(--space-lg);
+}
+.mt-xl {
+  margin-top: var(--space-xl);
+}
+
+.p-sm {
+  padding: var(--space-sm);
+}
+.p-md {
+  padding: var(--space-md);
+}
+.p-lg {
+  padding: var(--space-lg);
+}
+.p-xl {
+  padding: var(--space-xl);
+}
+
+/* Responsive grid utilities */
+.grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Auto-fit grid for responsive cards */
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/* Responsive visibility */
+.hidden {
+  display: none;
+}
+.block {
+  display: block;
+}
+.inline {
+  display: inline;
+}
+.inline-block {
+  display: inline-block;
+}
+.flex {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .md\:hidden {
+    display: none;
+  }
+  .md\:block {
+    display: block;
+  }
+  .md\:grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .md\:text-center {
+    text-align: center;
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  .grid-auto-fit,
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .sm\:hidden {
+    display: none;
+  }
+  .sm\:block {
+    display: block;
+  }
+  .sm\:grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .sm\:text-center {
+    text-align: center;
+  }
+
+  .grid-auto-fit,
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+/* App Styles */
 .App {
   background-color: crimson;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust values as needed */
+  box-shadow: var(--shadow-md);
+}
+
+/* Body styles - consolidated */
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #dc143c 0%, #b91c3c 50%, #dc143c 100%);
+  color: var(--text-primary);
+  background-size: cover;
+  background-attachment: fixed;
+  transition: var(--transition);
+  min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+[data-theme='dark'] body {
+  background: linear-gradient(135deg, #8b0000 0%, #660000 50%, #8b0000 100%);
+}
+
+/* Typography */
+h1 {
+  font-size: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-stretch: ultra-expanded;
+  text-align: center;
+  margin: 20px 0;
+  color: yellow;
 }
 
 .App h1 {
@@ -15,61 +309,18 @@ The fourth value (rgba(0, 0, 0, 0.1)) is the color and transparency of the shado
   align-items: center;
 }
 
-.pokemon-grid {
-  background-color: crimson;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.pokemon-card {
-  text-decoration: none;
-  color: #333;
-  background-color: silver;
-  border: 1px solid #ffcc00; /* Set the yellow border color */
-  border-radius: 10px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.2s ease-in-out;
-}
-
-.pokemon-card img {
-  max-width: 100%;
-  height: auto;
-}
-
-.pokemon-card h3 {
-  margin-top: 10px;
-  font-size: 1.2rem;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-size: cover; /* Adjust background image sizing */
-  background-attachment: fixed; /* For parallax scrolling effect */
-}
-
-body {
-  font-family: 'Open Sans', sans-serif; /* Load a Google Font */
-}
-
 .pokedex-title {
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   font-size: 2rem;
   letter-spacing: 2px;
-  color: yellow; /* Text color */
-  /* Additional styling properties */
+  color: yellow;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   background-color: black;
   padding: 10px 20px;
   border-radius: 8px;
   transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .pokedex-title:hover {
@@ -82,50 +333,50 @@ body {
   justify-content: center;
 }
 
-h1 {
-  font-size: 2rem;
-  font-family: Arial, Helvetica, sans-serif;
-  font-style:normal;
-  font-stretch:ultra-expanded;
-  text-align: center;
-  margin: 20px 0;
-  font-size: 40px;
-  color: yellow;
-}
-
-.pokemon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.pokemon-card {
-  text-decoration: none;
-  color: #333;
-  background-color: #f7f7f7;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
+/* Error States */
+.app-error {
   display: flex;
   flex-direction: column;
   align-items: center;
-  &:hover {
-    transform: scale(1.05);
-  }
-}
-
-.pokemon-card-content {
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
   text-align: center;
 }
 
-.pokemon-card img {
-  max-width: 100%;
-  height: auto;
+.app-error h2 {
+  color: var(--error-red);
+  margin-bottom: 16px;
 }
 
-.pokemon-card h3 {
-  margin-top: 10px;
-  font-size: 1.2rem;
+.app-error p {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  max-width: 500px;
+}
+
+.app-error button {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.app-error button:hover {
+  background-color: var(--primary-blue-dark);
+}
+
+.app-loading {
+  padding: 20px;
+}
+
+/* Card Styles - Consolidated and cleaned up */
+.pokemon-card-content {
+  text-align: center;
 }
 
 .pokemon-card p {
@@ -133,4 +384,3 @@ h1 {
   font-size: 0.9rem;
   color: black;
 }
-

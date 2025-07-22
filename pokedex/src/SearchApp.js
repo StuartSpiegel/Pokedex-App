@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { SearchProvider, SearchBox, Results } from '@elastic/react-search-ui';
 import AppSearchAPIConnector from '@elastic/search-ui-app-search-connector';
@@ -9,7 +8,7 @@ const searchConfig = {
     // Configure with your AppSearch credentials and endpoint
     searchKey: 'search-ncbpdth2g91j2ojyqr1q52ck',
     engineName: 'my-wesbite',
-    endpointBase: 'https://pandora.ent.us-central1.gcp.cloud.es.io'
+    endpointBase: 'https://pandora.ent.us-central1.gcp.cloud.es.io',
   }),
   alwaysSearchOnInitialLoad: true,
 };
@@ -17,10 +16,7 @@ const searchConfig = {
 // SearchApp component with Elastic Search UI components
 const SearchApp = () => (
   <SearchProvider config={searchConfig}>
-    <SearchBox
-      className="custom-search-box"
-      placeholder="Search by Pokemon name..."
-    />
+    <SearchBox className="custom-search-box" placeholder="Search by Pokemon name..." />
     <Results />
   </SearchProvider>
 );

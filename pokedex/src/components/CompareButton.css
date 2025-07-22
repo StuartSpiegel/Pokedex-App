@@ -1,0 +1,103 @@
+.compare-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  min-width: 80px;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.compare-button:hover {
+  background: var(--primary-blue-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.compare-button:active {
+  transform: translateY(0);
+}
+
+.compare-button.selected {
+  background: var(--success-green);
+  box-shadow: 0 0 8px rgba(39, 174, 96, 0.3);
+}
+
+.compare-button.selected:hover {
+  background: var(--success-green-dark);
+}
+
+.compare-button.disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.compare-button.disabled:hover {
+  background: var(--text-muted);
+  transform: none;
+  box-shadow: none;
+}
+
+.compare-icon {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.compare-button.selected .compare-icon {
+  animation: checkmark 0.3s ease-in-out;
+}
+
+.compare-text {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .compare-button {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    min-width: 70px;
+  }
+
+  .compare-text {
+    display: none;
+  }
+
+  .compare-icon {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .compare-button {
+    padding: 4px 6px;
+    border-radius: 12px;
+    min-width: 40px;
+  }
+}

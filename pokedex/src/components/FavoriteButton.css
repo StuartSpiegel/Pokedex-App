@@ -1,0 +1,181 @@
+.favorite-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.favorite-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+.favorite-btn:active {
+  transform: scale(0.95);
+}
+
+/* Size variants */
+.favorite-btn.small {
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+}
+
+.favorite-btn.medium {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.favorite-btn.large {
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+}
+
+/* Favorited state */
+.favorite-btn.favorited {
+  background: rgba(231, 76, 60, 0.1);
+  border-color: rgba(231, 76, 60, 0.3);
+}
+
+.favorite-btn.favorited:hover {
+  background: rgba(231, 76, 60, 0.2);
+  border-color: rgba(231, 76, 60, 0.5);
+}
+
+.favorite-icon {
+  transition: var(--transition);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.favorite-btn:hover .favorite-icon {
+  animation: heartBeat 0.6s ease-in-out;
+}
+
+.favorite-btn.favorited .favorite-icon {
+  animation: favoriteAdded 0.4s ease-out;
+}
+
+/* With label variant */
+.favorite-btn.with-label {
+  border-radius: var(--border-radius-lg);
+  padding: 8px 16px;
+  gap: 8px;
+  width: auto;
+  height: auto;
+}
+
+.favorite-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.favorite-btn.favorited .favorite-label {
+  color: var(--error-red);
+}
+
+/* Animations */
+@keyframes heartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes favoriteAdded {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Pulse effect for new favorites */
+.favorite-btn.favorited::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(231, 76, 60, 0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: favoritePulse 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes favoritePulse {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .favorite-btn.small {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .favorite-btn.medium {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .favorite-btn.large {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+
+  .favorite-label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorite-btn.with-label .favorite-label {
+    display: none;
+  }
+
+  .favorite-btn.with-label {
+    border-radius: 50%;
+    padding: 8px;
+    gap: 0;
+  }
+}

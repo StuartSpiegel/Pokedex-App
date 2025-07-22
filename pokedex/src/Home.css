@@ -1,10 +1,166 @@
 /* Home.css */
 .home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 50%, #ff6b6b 100%);
+  border-radius: var(--border-radius-lg);
+  color: white;
+  box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shine 3s infinite;
+}
+
+.pokemon-logo {
+  position: relative;
+  display: inline-block;
+}
+
+.pokemon-logo h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  font-weight: 900;
+  color: white;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-pokeball {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  opacity: 0.3;
+  animation: rotate 4s linear infinite;
+}
+
+.home-header p {
+  font-size: 1.4rem;
+  margin: 15px 0;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header-subtitle {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.header-subtitle span {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.header-subtitle span:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
   }
-  
-  /* Add any additional styling for the search bar if needed */
-  
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 15px;
+  }
+
+  .home-header {
+    padding: 30px 15px;
+    margin-bottom: 20px;
+  }
+
+  .pokemon-logo h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-header p {
+    font-size: 1.2rem;
+  }
+
+  .header-subtitle {
+    gap: 10px;
+  }
+
+  .header-subtitle span {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 10px;
+  }
+
+  .home-header {
+    padding: 20px 10px;
+  }
+
+  .pokemon-logo h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-header p {
+    font-size: 1rem;
+  }
+
+  .header-subtitle {
+    gap: 8px;
+  }
+
+  .header-subtitle span {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+}
