@@ -1,0 +1,255 @@
+.comparison-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--border-gray);
+  z-index: 1000;
+  max-width: 320px;
+  min-width: 280px;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.comparison-panel.collapsed {
+  max-height: 60px;
+  overflow: hidden;
+}
+
+.comparison-panel.expanded {
+  max-height: 500px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md);
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-gray);
+  background: var(--primary-blue);
+  color: white;
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  user-select: none;
+}
+
+.comparison-panel.collapsed .panel-header {
+  border-radius: var(--border-radius-lg);
+  border-bottom: none;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.comparison-icon {
+  font-size: 1.1rem;
+}
+
+.panel-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.clear-all-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.clear-all-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.toggle-btn {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 2px;
+  transition: var(--transition);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.panel-content {
+  padding: var(--space-md);
+  background: var(--surface);
+  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+}
+
+.selected-pokemon-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.selected-pokemon-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs);
+  background: var(--background-light);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.selected-pokemon-item:hover {
+  background: var(--background-gray);
+}
+
+.mini-pokemon-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.mini-pokemon-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mini-pokemon-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  line-height: 1.2;
+}
+
+.mini-pokemon-id {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.mini-remove-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: var(--error-red);
+  color: white;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.mini-remove-btn:hover {
+  background: var(--error-red-dark);
+  transform: scale(1.1);
+}
+
+.comparison-help-text {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.comparison-help-text p {
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.add-more {
+  color: var(--primary-blue);
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .comparison-panel {
+    bottom: 15px;
+    right: 15px;
+    left: 15px;
+    max-width: none;
+    min-width: unset;
+  }
+
+  .panel-header {
+    padding: var(--space-sm);
+  }
+
+  .panel-title {
+    font-size: 0.9rem;
+  }
+
+  .selected-pokemon-list {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-panel {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+  }
+
+  .panel-content {
+    padding: var(--space-sm);
+  }
+
+  .mini-pokemon-image {
+    width: 35px;
+    height: 35px;
+  }
+
+  .mini-pokemon-name {
+    font-size: 0.85rem;
+  }
+
+  .clear-all-btn {
+    padding: 3px 6px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Animation for panel appearance */
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.comparison-panel {
+  animation: slideUp 0.3s ease-out;
+}
